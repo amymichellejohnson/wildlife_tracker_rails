@@ -1,7 +1,20 @@
 <h1><%= @species.name %></h1>
+<%= image_tag @species.image %>
 
+<%= link_to "Add a new sighting", new_species_sighting_path(@species) %>
 <%= link_to "Edit this species", edit_species_path(@species) %> |
 <%= link_to "Delete this species", species_path(@species),
   :data => {:confirm => "Are you sure?", :method => "delete"} %> |
 
 <%= link_to "Return to Species List", species_index_path %>
+
+<h3>Sightings:</h3>
+<% @species.sightings.each do |sighting| %>
+  <p>Date: <%= sighting.date %></p>
+  <p>Latitude: <%= sighting.latitude %></p>
+  <p>Longitude: <%= sighting.longitude %></p>
+  <%= link_to "Edit this sighting", edit_species_sighting_path(@species, sighting) %> |
+  <%= link_to "Delete this sighting", species_sighting_path(@species, sighting),
+  :data => {:confirm => "Are you sure?", :method => "delete"} %>
+  <hr>
+<% end %>

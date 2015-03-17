@@ -3,5 +3,10 @@
 <%= form_for @species do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
+<select name="species[image]" id="species_image">
+  <option value="bobcat.jpg">Bobcat</option>
+  <option value="capybara.jpg">Capybara</option>
+  <option value="fruity.jpg">Fruit Bat</option>
+</select>
 <%= f.submit %>
 <% end %>
